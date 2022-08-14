@@ -1,0 +1,99 @@
+<div mat-dialog-title class="dialog flex">
+  <h2>ایجاد</h2>
+  <button mat-icon-button aria-label="close" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content class="mat-typography">
+
+  <div class="error-box" *ngIf="showErrors">
+    <ul>
+      <li *ngFor="let err of errors">{{err}}</li>
+    </ul>
+  </div>
+
+  <form [formGroup]="rayanForm">
+    <div class="padding-20">
+      <div class="padding-bottom-20" class="flex">
+
+        <mat-form-field class="flex-30">
+          <mat-label>تاریخ</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            <ul *errorMessages="{errors: date.errors, isValid :isFieldValid('date')}; errors as errors">
+              <li *ngFor="let error of errors">{{error['message']}}</li>
+            </ul>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="flex-30">
+          <mat-label>موضوع</mat-label>
+          <input type="text" matInput placeholder="" formControlName="subject" name="subject">
+          <mat-error>
+            <ul *errorMessages="{errors: subject.errors, isValid :isFieldValid('subject')}; errors as errors">
+              <li *ngFor="let error of errors">{{error['message']}}</li>
+            </ul>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="flex-30">
+          <mat-label>شرح</mat-label>
+          <input type="text" matInput placeholder="" formControlName="description" name="description">
+        </mat-form-field>
+
+        <mat-form-field class="flex-30">
+          <mat-label>نام</mat-label>
+          <input type="text" matInput placeholder="" formControlName="firstName" name="firstName">
+          <mat-error>
+            <ul *errorMessages="{errors: firstName.errors, isValid :isFieldValid('firstName')}; errors as errors">
+              <li *ngFor="let error of errors">{{error['message']}}</li>
+            </ul>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="flex-30">
+          <mat-label>نام خانوادگی خریدا ر</mat-label>
+          <input type="text" matInput placeholder="" formControlName="lastName" name="lastName">
+          <mat-error>
+            <ul *errorMessages="{errors: lastName.errors, isValid :isFieldValid('lastName')}; errors as errors">
+              <li *ngFor="let error of errors">{{error['message']}}</li>
+            </ul>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="flex-30">
+          <mat-label>حساب</mat-label>
+          <input type="text"
+                 matInput
+                 formControlName="account"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of accountOptions | async" [value]="option.value">
+              {{option.text}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="flex-30">
+          <mat-label>تحویل گیرند ه</mat-label>
+          <input type="text"
+                 matInput
+                 formControlName="transferee"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of transfereeOptions | async" [value]="option.value">
+              {{option.text}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>بستن</button>
+  <button mat-button cdkFocusInitial (click)="saveForm()">ذخیره</button>
+</mat-dialog-actions>

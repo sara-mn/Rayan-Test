@@ -1,0 +1,15 @@
+.table-row-action{
+  visibility: hidden;
+}
+.table-row:hover {
+  background: whitesmoke;
+  .table-row-action{
+    visibility: visible;
+  }
+}
+
+.actionCol{
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}

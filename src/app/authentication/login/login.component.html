@@ -1,0 +1,39 @@
+<div>
+  <div class="error-box" *ngIf="error$ | async">
+    <ul>
+      <li>{{(error$ | async)?.message}}</li>
+    </ul>
+  </div>
+
+  <form [formGroup]="loginForm">
+    <div class="padding-20">
+      <div class="padding-bottom-20">
+        <div>
+          <mat-form-field class="">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput placeholder="" formControlName="username" name="username">
+            <mat-error>
+              <ul *errorMessages="{errors: username.errors, isValid :isFieldValid('username')}; errors as errors">
+                <li *ngFor="let error of errors">{{error['message']}}</li>
+              </ul>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="" formControlName="password" name="password">
+          </mat-form-field>
+          <mat-error>
+            <ul *errorMessages="{errors: password.errors, isValid :isFieldValid('password')}; errors as errors">
+              <li *ngFor="let error of errors">{{error['message']}}</li>
+            </ul>
+          </mat-error>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <button mat-button cdkFocusInitial (click)="login()">Save</button>
+</div>

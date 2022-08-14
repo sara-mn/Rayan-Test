@@ -1,1 +1,142 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+
+body, body *, * {
+  font-family: "IRANSans", Tahoma, serif;
+  margin: 0;
+  padding: 0;
+}
+
+/*#region scrollStyle*/
+* {
+  //overflow-y: scroll;
+  scrollbar-color: #cccccc transparent;
+  scrollbar-width: thin;
+  //scrollbar-height: thin;
+}
+
+::-webkit-scrollbar {
+  height: 11px;
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  /*border: thin solid lightgray;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1) inset;*/
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border: 2px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+}
+
+/*#endregion*/
+
+tr.no-data-row {
+  display: flex;
+  border-width: 0;
+  border-style: solid;
+  align-items: center;
+  box-sizing: border-box;
+
+  td {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    word-wrap: break-word;
+    min-height: inherit;
+    height: 100%;
+  }
+}
+
+
+//////////////////////
+.relative {
+  position: relative;
+}
+
+.add-table-btn {
+  position: absolute !important;
+  right: 15px;
+  top: 15px;
+}
+
+.modal-50 {
+  width: 500px;
+}
+
+fieldset.sub-form{
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+
+  legend{
+    padding: 0 10px;
+    font-size: large;
+  }
+}
+
+.error-box{
+  border: 1px solid #eb4769;
+  background: #fdeef1;
+  color: #dd395a;
+  font-size: 13px;
+  border-radius: 3px;
+  padding: 10px 30px;
+  margin: 20px 20px;
+}
+
+.warning-box{
+
+}
+
+.success-box{
+
+}
+
+.info-box{
+
+}
+
+.padding-20{
+  padding: 20px;
+}
+
+.padding-bottom-20{
+  padding-bottom: 20px;
+}
+
+.padding-bottom-10{
+  padding-bottom: 10px;
+}
+
+app-data-list{
+  width: 100%;
+}
+
+.dialog{
+  width: 100%;
+}
+
+.flex{
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.flex-30{
+  width: 30%;
+}
+
+.mat-form-field {
+  direction: rtl !important;
+  text-align: right !important;
+}
